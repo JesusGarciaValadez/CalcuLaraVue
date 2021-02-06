@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\CalculatorController;
+use \App\Http\Middleware\HasOperation;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::name('calculation.')->group(function () {
+    Route::get('/operations', [CalculatorController::class, 'index'])->name('index');
+
+    Route::post('/operations', [CalculatorController::class, 'store'])->middleware([HasOperation::class])->name('store');
+
+    Route::delete('/operations/{operations}', [CalculatorController::class, 'delete'])->name('delete');
+
+    Route::delete('/operations', [CalculatorController::class, 'destroy'])->name('destroy');
 });
