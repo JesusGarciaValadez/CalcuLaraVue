@@ -12,6 +12,16 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .vue()
+    .extract(['vue'])
     .postCss('resources/css/app.css', 'public/css', [
-        //
+        require("tailwindcss"),
     ]);
+
+if (mix.inProduction()) {
+    mix.version()
+        .sourceMaps();
+}
+
+mix.browserSync('patientprism-interview.test');
+mix.disableNotifications();
