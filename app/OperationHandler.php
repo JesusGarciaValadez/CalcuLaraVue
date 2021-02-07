@@ -14,12 +14,12 @@ use Ramsey\Collection\Exception\ValueExtractionException;
 
 class OperationHandler
 {
-    private function getOperationToExecuteFromRequest(Request $request): Stringable
+    public function getOperationToExecuteFromRequest(string $operation): Stringable
     {
-        return Str::of($request->get('operation'))->trim();
+        return Str::of($operation)->trim();
     }
 
-    private function getResultFromOperation(Stringable $operation): string
+    public function getResultFromOperation(Stringable $operation): string
     {
         if($operation->contains('+')) {
             return addition($operation);
@@ -37,7 +37,7 @@ class OperationHandler
             return division($operation);
         }
 
-        throw new ValueExtractionException('There\'s not an operation to do.');
+        throw new ValueExtractionException('There\'s not a valid operation to do.');
     }
 
     /**
@@ -64,7 +64,7 @@ class OperationHandler
      */
     public function storeAnOperation(Request $request, OperationsModel $operationModel): array
     {
-        $operationToExecute = $this->getOperationToExecuteFromRequest($request);
+        $operationToExecute = $this->getOperationToExecuteFromRequest($request->get('operation'));
         $result = $this->getResultFromOperation($operationToExecute);
 
         $response = [
