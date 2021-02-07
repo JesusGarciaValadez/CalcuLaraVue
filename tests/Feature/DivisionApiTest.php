@@ -8,6 +8,8 @@ use Tests\TestCase;
 
 class DivisionApiTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test making an API request to store an division
      *

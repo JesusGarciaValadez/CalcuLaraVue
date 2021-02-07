@@ -8,6 +8,8 @@ use Tests\TestCase;
 
 class SubtractionApiTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test making an API request to store an subtraction
      *
