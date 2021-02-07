@@ -3,7 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Operations;
+use App\OperationHandler;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\Request;
 
 class OperationsFactory extends Factory
 {
@@ -21,10 +23,15 @@ class OperationsFactory extends Factory
      */
     public function definition()
     {
+        $operationRequest = (string) ($this->faker->numberBetween(1, 10) . $this->faker->randomElement(['+', '-', '*', '/']) . $this->faker->numberBetween(1, 10));
+        $operationHandler = new OperationHandler();
+        $operation = $operationHandler->getOperationToExecuteFromRequest($operationRequest);
+        $result = $operationHandler->getResultFromOperation($operation);
+
         return [
-            'operation' => $this->faker->randomNumber() . $this->faker->randomElement(['+', '-', '*', '/']) . $this->faker->randomNumber(),
-            'result' => '8',
-            'updated_date' => now(),
+            'operation' => $operation,
+            'result' => $result,
+            'updated_date' => today(),
         ];
     }
 }
