@@ -16838,7 +16838,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     _: 1
     /* STABLE */
 
-  }), $setup.operations.lenght > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Clear, {
+  }), $setup.operations.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Clear, {
     key: 0,
     onClick: $setup.deleteOperations
   }, {
@@ -17434,12 +17434,13 @@ function useGetResult() {
 
             case 4:
               response = _context.sent;
+              console.log(response);
 
-              if (response.status === 200) {
+              if (response.status === 201) {
                 getMostRecentOperations();
               }
 
-            case 6:
+            case 7:
             case "end":
               return _context.stop();
           }

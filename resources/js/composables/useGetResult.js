@@ -14,8 +14,9 @@ export default function useGetResult() {
         const response = await axios.post('./api/operations', {
             operation: operation.value,
         })
+        console.log(response)
 
-        if(response.status === 200) {
+        if(response.status === 201) {
             getMostRecentOperations()
         }
     }

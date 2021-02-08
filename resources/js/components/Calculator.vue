@@ -37,7 +37,7 @@
                 <template v-slot:default>+</template>
             </Operator>
             <Clear @click="deleteOperations"
-                   v-if="operations.lenght > 0">
+                   v-if="operations.length">
                 <template v-slot:default>Clear tape</template>
             </Clear>
         </form>
