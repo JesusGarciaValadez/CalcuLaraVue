@@ -1,6 +1,13 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/manifest.js": "/js/manifest.js",
+    "/js/components/Calculator.js": "/js/components/Calculator.js",
+    "/js/components/Result.js": "/js/components/Result.js",
+    "/js/components/TicketTape.js": "/js/components/TicketTape.js",
+    "/js/components/Clear.js": "/js/components/Clear.js",
+    "/js/components/Number.js": "/js/components/Number.js",
+    "/js/components/Operator.js": "/js/components/Operator.js",
+    "/js/components/Submit.js": "/js/components/Submit.js",
     "/css/app.css": "/css/app.css",
     "/js/vendor.js": "/js/vendor.js"
 }

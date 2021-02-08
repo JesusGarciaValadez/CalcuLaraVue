@@ -1,0 +1,86 @@
+<template>
+    <div class="mt-12 mb-5">
+        <Result result="result" operation="operation" />
+
+        <form method="POST" class="grid grid-cols-4 gap-1 grid-cols">
+            <Number v-for="(value, name, index) in [7, 8, 9]"
+                    :key="index"
+                    @click="getResult(`${value}`)"
+            >
+                <template v-slot:default>{{ value }}</template>
+            </Number>
+            <Operator>
+                <template v-slot:default>÷</template>
+            </Operator>
+            <Number v-for="(value, name, index) in [4, 5, 6]"
+                    :key="index"
+                    @click="getResult(`${value}`)"
+            >
+                <template v-slot:default>{{ value }}</template>
+            </Number>
+            <Operator @click="getResult(`*`)">
+                <template v-slot:default>×</template>
+            </Operator>
+            <Number v-for="(value, name, index) in [1, 2, 3]"
+                    :key="index"
+                    @click="getResult(`${value}`)"
+            >
+                <template v-slot:default>{{ value }}</template>
+            </Number>
+            <Operator @click="getResult('-')">
+                <template v-slot:default>−</template>
+            </Operator>
+            <Number @click="getResult('0')">
+                <template v-slot:default>0</template>
+            </Number>
+            <Submit @click="getResult('=')">
+                <template v-slot:default>=</template>
+            </Submit>
+            <Operator @click="getResult('+')">
+                <template v-slot:default>+</template>
+            </Operator>
+            <Clear @click="deleteOperations">
+                <template v-slot:default>Clear tape</template>
+            </Clear>
+        </form>
+    </div>
+</template>
+
+<script>
+import Result from "./calculator/Result"
+import Number from "./calculator/buttons/Number";
+import Operator from "./calculator/buttons/Operator";
+import Submit from "./calculator/buttons/Submit";
+import Clear from "./calculator/buttons/Clear";
+import {toRefs} from "vue";
+
+export default {
+    name: "Calculator",
+    data(){
+        return {
+            operation: ''
+        }
+    },
+    components: {
+        Clear,
+        Number,
+        Operator,
+        Result,
+        Submit,
+    },
+    props: ['result', 'getResult', 'deleteOperations'],
+    setup(props) {
+        const { result, getResults, deleteOperations } = toRefs(props)
+
+        return {
+            result,
+            getResults,
+            deleteOperations,
+        }
+    }
+}
+</script>
+
+<style scoped>
+
+</style>
