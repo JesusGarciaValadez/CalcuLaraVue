@@ -1,6 +1,5 @@
 <template>
-    <div class="bg-yellow-200 text-right font-base font-light w-full h-auto overflow-hidden p-5 relative bottom-0 max-h-96 mb-5"
-         v-if="operations.lenght > 0">
+    <div class="bg-yellow-200 text-right font-base font-light w-full h-auto overflow-hidden p-5 relative bottom-0 max-h-96 mb-5">
         <ul class="m-0 p-0 w-full relative h-auto bottom-0 flex flex-col-reverse">
             <TickerRow v-for="operation in operations"
                        :key="operation.id"
@@ -13,7 +12,7 @@
 
 <script>
 import { toRefs } from 'vue'
-import TickerRow from "../TickerRow";
+import TickerRow from "./TickerRow";
 
 export default {
     name: 'TickerTape',

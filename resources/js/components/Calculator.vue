@@ -5,17 +5,15 @@
         <form method="POST" class="grid grid-cols-4 gap-1 grid-cols">
             <Number v-for="(value, name, index) in [7, 8, 9]"
                     :key="index"
-                    @click="getResult(`${value}`)"
-            >
+                    @click="getResult(`${value}`)">
                 <template v-slot:default>{{ value }}</template>
             </Number>
-            <Operator>
+            <Operator @click="getResult('/')">
                 <template v-slot:default>÷</template>
             </Operator>
             <Number v-for="(value, name, index) in [4, 5, 6]"
                     :key="index"
-                    @click="getResult(`${value}`)"
-            >
+                    @click="getResult(`${value}`)">
                 <template v-slot:default>{{ value }}</template>
             </Number>
             <Operator @click="getResult(`*`)">
@@ -23,8 +21,7 @@
             </Operator>
             <Number v-for="(value, name, index) in [1, 2, 3]"
                     :key="index"
-                    @click="getResult(`${value}`)"
-            >
+                    @click="getResult(`${value}`)">
                 <template v-slot:default>{{ value }}</template>
             </Number>
             <Operator @click="getResult('-')">
@@ -33,13 +30,14 @@
             <Number @click="getResult('0')">
                 <template v-slot:default>0</template>
             </Number>
-            <Submit @click="getResult('=')">
+            <Submit @click="addNewOperation(getMostRecentOperations, $event)">
                 <template v-slot:default>=</template>
             </Submit>
             <Operator @click="getResult('+')">
                 <template v-slot:default>+</template>
             </Operator>
-            <Clear @click="deleteOperations">
+            <Clear @click="deleteOperations"
+                   v-if="operations.lenght > 0">
                 <template v-slot:default>Clear tape</template>
             </Clear>
         </form>
@@ -56,11 +54,6 @@ import {toRefs} from "vue";
 
 export default {
     name: "Calculator",
-    data(){
-        return {
-            operation: ''
-        }
-    },
     components: {
         Clear,
         Number,
@@ -68,13 +61,17 @@ export default {
         Result,
         Submit,
     },
-    props: ['result', 'getResult', 'deleteOperations'],
+    props: ['result', 'getResult', 'operation', 'operations', 'getMostRecentOperations', 'addNewOperation', 'deleteOperations'],
     setup(props) {
-        const { result, getResults, deleteOperations } = toRefs(props)
+        const { result, getResults, operation, operations, getMostRecentOperations, addNewOperation, deleteOperations } = toRefs(props)
 
         return {
             result,
             getResults,
+            operation,
+            operations,
+            getMostRecentOperations,
+            addNewOperation,
             deleteOperations,
         }
     }

@@ -6,10 +6,24 @@ export default function useGetResult() {
     const getResult = () => {
         result.value = ''
     }
+    const addNewOperation = async(getMostRecentOperations, event) => {
+        if (event) {
+            event.preventDefault()
+        }
+        operation.value = '4+4'
+        const response = await axios.post('./api/operations', {
+            operation: operation.value,
+        })
+
+        if(response.status === 200) {
+            getMostRecentOperations()
+        }
+    }
 
     return {
         result,
         operation,
-        getResult
+        getResult,
+        addNewOperation
     }
 }

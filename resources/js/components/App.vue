@@ -9,14 +9,19 @@
         </TitleSection>
 
         <Calculator result="result"
+                    operation="operation"
+                    :operations="operations"
                     :getResult="getResult"
                     :deleteOperations="deleteOperations"
+                    :addNewOperation="addNewOperation"
+                    :getMostRecentOperations="getMostRecentOperations"
         />
 
         <TickerTape result="result"
                     :operations="operations"
                     :deleteOperation="deleteOperation"
                     :getMostRecentOperations="getMostRecentOperations"
+                    v-if="operations.length"
         />
     </div>
 </template>
@@ -40,13 +45,15 @@ export default {
         TitleSection,
     },
     setup(props) {
-        const { result, getResult, operation } = useGetResult()
+        const { result, getResult, operation, addNewOperation } = useGetResult()
         const { operations, getMostRecentOperations } = useRecentOperations(result)
         const { operationDeleted, deleteOperation, deleteOperations } = useDeleteOperation(getMostRecentOperations)
 
         return {
             result,
             getResult,
+            operation,
+            addNewOperation,
             operations,
             getMostRecentOperations,
             operationDeleted,
