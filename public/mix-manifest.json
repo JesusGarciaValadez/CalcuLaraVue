@@ -1,13 +1,6 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/manifest.js": "/js/manifest.js",
-    "/js/components/Calculator.js": "/js/components/Calculator.js",
-    "/js/components/Result.js": "/js/components/Result.js",
-    "/js/components/TicketTape.js": "/js/components/TicketTape.js",
-    "/js/components/Clear.js": "/js/components/Clear.js",
-    "/js/components/Number.js": "/js/components/Number.js",
-    "/js/components/Operator.js": "/js/components/Operator.js",
-    "/js/components/Submit.js": "/js/components/Submit.js",
-    "/css/app.css": "/css/app.css",
-    "/js/vendor.js": "/js/vendor.js"
+    "/js/app.js": "/js/app.js?id=077198f0a90381392a97",
+    "/js/manifest.js": "/js/manifest.js?id=8f8558e8a30fd416d4d8",
+    "/css/app.css": "/css/app.css?id=47dc30049a1fd30924d6",
+    "/js/vendor.js": "/js/vendor.js?id=0a960b982b9bd68f5cf9"
 }
