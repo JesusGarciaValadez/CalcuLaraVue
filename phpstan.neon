@@ -11,8 +11,9 @@ parameters:
 
     ignoreErrors:
         #- '#Unsafe usage of new static#'
+        - '#Negated boolean expression is always false.#'
 
     excludePaths:
-        - ./App/Http/Middleware/Authenticate.php
+        - ./app/Http/Middleware/Authenticate.php
 
     checkMissingIterableValueType: false

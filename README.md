@@ -121,6 +121,12 @@ You can specify if the tests should run in parallel with `x` processes as there 
 php artisan test --parallel --process=x
 ```
 
+For static analysis
+
+```
+php composer larastan
+```
+
 # TODO:
 
 - Add Front-end tests using Laravel Dusk.
