@@ -14,7 +14,7 @@ class CalculatorController extends Controller
      * Display a listing of the resource.
      *
      * @param Calculator $calculator
-     * @param OperationsModel $operationsModel
+     * @param Operations $operations
      * @return JsonResponse
      */
     public function index(Calculator $calculator, Operations $operations): JsonResponse
@@ -37,7 +37,7 @@ class CalculatorController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @param OperationsModel $operationsModel
+     * @param Operations $operations
      * @param Calculator $calculator
      * @return JsonResponse
      */
@@ -50,7 +50,7 @@ class CalculatorController extends Controller
      * Delete the specified resource.
      *
      * @param Calculator $calculator
-     * @param OperationsModel $operationsModel
+     * @param Operations $operations
      * @return JsonResponse
      */
     public function delete(Calculator $calculator, Operations $operations): JsonResponse
@@ -62,7 +62,7 @@ class CalculatorController extends Controller
      * Remove all the resources from storage.
      *
      * @param Calculator $calculator
-     * @param OperationsModel $operationsModel
+     * @param Operations $operations
      * @return JsonResponse
      */
     public function destroy(Calculator $calculator, Operations $operations): JsonResponse
