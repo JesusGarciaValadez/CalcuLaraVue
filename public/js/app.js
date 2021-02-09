@@ -16316,14 +16316,15 @@ __webpack_require__.r(__webpack_exports__);
     TickerTape: _calculator_TickerTape__WEBPACK_IMPORTED_MODULE_3__.default,
     TitleSection: _calculator_TitleSection__WEBPACK_IMPORTED_MODULE_1__.default
   },
-  setup: function setup(props) {
+  setup: function setup() {
     var _useGetResult = (0,_composables_useGetResult__WEBPACK_IMPORTED_MODULE_4__.default)(),
         result = _useGetResult.result,
         getResult = _useGetResult.getResult,
         operation = _useGetResult.operation,
+        createOperation = _useGetResult.createOperation,
         addNewOperation = _useGetResult.addNewOperation;
 
-    var _useRecentOperations = (0,_composables_useRecentOperations__WEBPACK_IMPORTED_MODULE_5__.default)(result),
+    var _useRecentOperations = (0,_composables_useRecentOperations__WEBPACK_IMPORTED_MODULE_5__.default)(),
         operations = _useRecentOperations.operations,
         getMostRecentOperations = _useRecentOperations.getMostRecentOperations;
 
@@ -16336,6 +16337,7 @@ __webpack_require__.r(__webpack_exports__);
       result: result,
       getResult: getResult,
       operation: operation,
+      createOperation: createOperation,
       addNewOperation: addNewOperation,
       operations: operations,
       getMostRecentOperations: getMostRecentOperations,
@@ -16380,7 +16382,7 @@ __webpack_require__.r(__webpack_exports__);
     Result: _calculator_Result__WEBPACK_IMPORTED_MODULE_0__.default,
     Submit: _calculator_buttons_Submit__WEBPACK_IMPORTED_MODULE_3__.default
   },
-  props: ['result', 'getResult', 'operation', 'operations', 'getMostRecentOperations', 'addNewOperation', 'deleteOperations'],
+  props: ['result', 'getResult', 'operation', 'createOperation', 'operations', 'getMostRecentOperations', 'addNewOperation', 'deleteOperations'],
   setup: function setup(props) {
     var _toRefs = (0,vue__WEBPACK_IMPORTED_MODULE_5__.toRefs)(props),
         result = _toRefs.result,
@@ -16634,16 +16636,17 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Calculator, {
-    result: "result",
-    operation: "operation",
+    result: $setup.result,
+    operation: $setup.operation,
     operations: $setup.operations,
     getResult: $setup.getResult,
     deleteOperations: $setup.deleteOperations,
     addNewOperation: $setup.addNewOperation,
-    getMostRecentOperations: $setup.getMostRecentOperations
+    getMostRecentOperations: $setup.getMostRecentOperations,
+    createOperation: $setup.createOperation
   }, null, 8
   /* PROPS */
-  , ["operations", "getResult", "deleteOperations", "addNewOperation", "getMostRecentOperations"]), $setup.operations.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_TickerTape, {
+  , ["result", "operation", "operations", "getResult", "deleteOperations", "addNewOperation", "getMostRecentOperations", "createOperation"]), $setup.operations.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_TickerTape, {
     key: 0,
     result: "result",
     operations: $setup.operations,
@@ -16690,11 +16693,13 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("0");
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("=");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(".");
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("+");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("=");
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Clear tape");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("+");
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Clear tape");
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
@@ -16710,13 +16715,15 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   var _component_Clear = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Clear");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Result, {
-    result: "result",
-    operation: "operation"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)([7, 8, 9], function (value, name, index) {
+    result: $setup.result,
+    operation: $setup.operation
+  }, null, 8
+  /* PROPS */
+  , ["result", "operation"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)([7, 8, 9], function (value, name, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Number, {
       key: index,
       onClick: function onClick($event) {
-        return $props.getResult("".concat(value));
+        return $props.createOperation("".concat(value));
       }
     }, {
       "default": _withId(function () {
@@ -16734,7 +16741,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   /* STABLE_FRAGMENT */
   )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Operator, {
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $props.getResult('/');
+      return $props.createOperation('/');
     })
   }, {
     "default": _withId(function () {
@@ -16747,7 +16754,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Number, {
       key: index,
       onClick: function onClick($event) {
-        return $props.getResult("".concat(value));
+        return $props.createOperation("".concat(value));
       }
     }, {
       "default": _withId(function () {
@@ -16765,7 +16772,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   /* STABLE_FRAGMENT */
   )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Operator, {
     onClick: _cache[2] || (_cache[2] = function ($event) {
-      return $props.getResult("*");
+      return $props.createOperation("*");
     })
   }, {
     "default": _withId(function () {
@@ -16778,7 +16785,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Number, {
       key: index,
       onClick: function onClick($event) {
-        return $props.getResult("".concat(value));
+        return $props.createOperation("".concat(value));
       }
     }, {
       "default": _withId(function () {
@@ -16796,7 +16803,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   /* STABLE_FRAGMENT */
   )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Operator, {
     onClick: _cache[3] || (_cache[3] = function ($event) {
-      return $props.getResult('-');
+      return $props.createOperation('-');
     })
   }, {
     "default": _withId(function () {
@@ -16807,7 +16814,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Number, {
     onClick: _cache[4] || (_cache[4] = function ($event) {
-      return $props.getResult('0');
+      return $props.createOperation('0');
     })
   }, {
     "default": _withId(function () {
@@ -16816,9 +16823,9 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Submit, {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Operator, {
     onClick: _cache[5] || (_cache[5] = function ($event) {
-      return $setup.addNewOperation($setup.getMostRecentOperations, $event);
+      return $props.createOperation('.');
     })
   }, {
     "default": _withId(function () {
@@ -16827,13 +16834,24 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Operator, {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Submit, {
     onClick: _cache[6] || (_cache[6] = function ($event) {
-      return $props.getResult('+');
+      return $setup.addNewOperation($setup.getMostRecentOperations, $event);
     })
   }, {
     "default": _withId(function () {
       return [_hoisted_8];
+    }),
+    _: 1
+    /* STABLE */
+
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Operator, {
+    onClick: _cache[7] || (_cache[7] = function ($event) {
+      return $props.createOperation('+');
+    })
+  }, {
+    "default": _withId(function () {
+      return [_hoisted_9];
     }),
     _: 1
     /* STABLE */
@@ -16843,7 +16861,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     onClick: $setup.deleteOperations
   }, {
     "default": _withId(function () {
-      return [_hoisted_9];
+      return [_hoisted_10];
     }),
     _: 1
     /* STABLE */
@@ -17200,9 +17218,6 @@ var _withId = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.withScopeId)("dat
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-39e42bf8");
 
 var _hoisted_1 = {
-  "class": "col-span-2"
-};
-var _hoisted_2 = {
   type: "submit",
   "class": "w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white font-bold bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
 };
@@ -17210,7 +17225,7 @@ var _hoisted_2 = {
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])]);
 });
 
 /***/ }),
@@ -17283,6 +17298,117 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/composables/operations.js":
+/*!************************************************!*\
+  !*** ./resources/js/composables/operations.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addition": () => (/* binding */ addition),
+/* harmony export */   "subtraction": () => (/* binding */ subtraction),
+/* harmony export */   "multiplication": () => (/* binding */ multiplication),
+/* harmony export */   "division": () => (/* binding */ division)
+/* harmony export */ });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+function validateOperatings(_ref) {
+  var _parseFloat, _parseFloat2;
+
+  var _ref2 = _slicedToArray(_ref, 2),
+      operationOne = _ref2[0],
+      operationgTwo = _ref2[1];
+
+  if ((0,lodash__WEBPACK_IMPORTED_MODULE_0__.isNull)(operationOne) || (0,lodash__WEBPACK_IMPORTED_MODULE_0__.isNull)(operationOne)) {
+    throw new Error('One of the operands is not present.');
+  }
+
+  if ((0,lodash__WEBPACK_IMPORTED_MODULE_0__.isNumber)(operationOne) || (0,lodash__WEBPACK_IMPORTED_MODULE_0__.isNumber)(operationgTwo)) {
+    throw new Error('One of the operands is not a valid number.');
+  }
+
+  var firstOperating = (_parseFloat = parseFloat(operationOne)) !== null && _parseFloat !== void 0 ? _parseFloat : 0.0;
+  var secondOperating = (_parseFloat2 = parseFloat(operationgTwo)) !== null && _parseFloat2 !== void 0 ? _parseFloat2 : 0.0;
+
+  if (isNaN(firstOperating) || isNaN(secondOperating)) {
+    throw new Error('The operation is not valid.');
+  }
+
+  return [firstOperating, secondOperating];
+}
+
+function addition(operation) {
+  var operatings = operation.value.split(/[+]+/);
+
+  if (operatings.length > 1 && !(0,lodash__WEBPACK_IMPORTED_MODULE_0__.isEmpty)(operatings[0]) && !(0,lodash__WEBPACK_IMPORTED_MODULE_0__.isEmpty)(operatings[1])) {
+    var _validateOperatings = validateOperatings(operatings),
+        _validateOperatings2 = _slicedToArray(_validateOperatings, 2),
+        firstOperating = _validateOperatings2[0],
+        secondOperating = _validateOperatings2[1];
+
+    return parseFloat(firstOperating + secondOperating);
+  }
+}
+
+function subtraction(operation) {
+  var operatings = operation.value.split(/[\-]+/);
+
+  if (operatings.length > 1 && !(0,lodash__WEBPACK_IMPORTED_MODULE_0__.isEmpty)(operatings[0]) && !(0,lodash__WEBPACK_IMPORTED_MODULE_0__.isEmpty)(operatings[1])) {
+    var _validateOperatings3 = validateOperatings(operatings),
+        _validateOperatings4 = _slicedToArray(_validateOperatings3, 2),
+        firstOperating = _validateOperatings4[0],
+        secondOperating = _validateOperatings4[1];
+
+    return parseFloat(firstOperating - secondOperating);
+  }
+}
+
+function division(operation) {
+  var operatings = operation.value.split(/[\/]+/);
+
+  if (operatings.length > 1 && !(0,lodash__WEBPACK_IMPORTED_MODULE_0__.isEmpty)(operatings[0]) && !(0,lodash__WEBPACK_IMPORTED_MODULE_0__.isEmpty)(operatings[1])) {
+    var _validateOperatings5 = validateOperatings(operatings),
+        _validateOperatings6 = _slicedToArray(_validateOperatings5, 2),
+        firstOperating = _validateOperatings6[0],
+        secondOperating = _validateOperatings6[1];
+
+    return parseFloat(firstOperating / secondOperating);
+  }
+}
+
+function multiplication(operation) {
+  var operatings = operation.value.split(/[\*]+/);
+
+  if (operatings.length > 1 && !(0,lodash__WEBPACK_IMPORTED_MODULE_0__.isEmpty)(operatings[0]) && !(0,lodash__WEBPACK_IMPORTED_MODULE_0__.isEmpty)(operatings[1])) {
+    var _validateOperatings7 = validateOperatings(operatings),
+        _validateOperatings8 = _slicedToArray(_validateOperatings7, 2),
+        firstOperating = _validateOperatings8[0],
+        secondOperating = _validateOperatings8[1];
+
+    return parseFloat(firstOperating * secondOperating);
+  }
+}
+
+
 
 /***/ }),
 
@@ -17400,6 +17526,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _operations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./operations */ "./resources/js/composables/operations.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -17407,40 +17536,65 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
+
+
 function useGetResult() {
-  var result = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('');
-  var operation = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('');
+  var result = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('0');
+  var operation = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('0');
 
   var getResult = function getResult() {
-    result.value = '';
+    var operationToAnalyse = operation.value.split('');
+
+    if ((0,lodash__WEBPACK_IMPORTED_MODULE_2__.isEmpty)(operationToAnalyse)) {
+      result.value = 0;
+      return;
+    }
+
+    if (operationToAnalyse.find(function (_char) {
+      return _char === '+';
+    })) {
+      result.value = (0,_operations__WEBPACK_IMPORTED_MODULE_3__.addition)(operation);
+      return;
+    }
+
+    if (operationToAnalyse.find(function (_char2) {
+      return _char2 === '-';
+    })) {
+      result.value = (0,_operations__WEBPACK_IMPORTED_MODULE_3__.subtraction)(operation);
+      return;
+    }
+
+    if (operationToAnalyse.find(function (_char3) {
+      return _char3 === '*';
+    })) {
+      result.value = (0,_operations__WEBPACK_IMPORTED_MODULE_3__.multiplication)(operation);
+      return;
+    }
+
+    if (operationToAnalyse.find(function (_char4) {
+      return _char4 === '/';
+    })) {
+      result.value = (0,_operations__WEBPACK_IMPORTED_MODULE_3__.division)(operation);
+      return;
+    }
+
+    result.value = 0;
   };
 
-  var addNewOperation = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(getMostRecentOperations, event) {
-      var response;
+  var createOperation = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(_char5) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (event) {
-                event.preventDefault();
+              if (result.value !== 0) {
+                result.value = 0;
+                operation.value = '';
               }
 
-              operation.value = '4+4';
-              _context.next = 4;
-              return axios.post('./api/operations', {
-                operation: operation.value
-              });
+              operation.value += _char5;
 
-            case 4:
-              response = _context.sent;
-              console.log(response);
-
-              if (response.status === 201) {
-                getMostRecentOperations();
-              }
-
-            case 7:
+            case 2:
             case "end":
               return _context.stop();
           }
@@ -17448,16 +17602,63 @@ function useGetResult() {
       }, _callee);
     }));
 
-    return function addNewOperation(_x, _x2) {
+    return function createOperation(_x) {
       return _ref.apply(this, arguments);
     };
   }();
 
+  var addNewOperation = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(getMostRecentOperations, event) {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (event) {
+                event.preventDefault();
+              }
+
+              getResult();
+
+              if (!(operation.value.length <= 0 || result === '0')) {
+                _context2.next = 4;
+                break;
+              }
+
+              return _context2.abrupt("return", false);
+
+            case 4:
+              _context2.next = 6;
+              return axios.post('./api/operations', {
+                operation: operation.value
+              });
+
+            case 6:
+              response = _context2.sent;
+
+              if (response.status === 201) {
+                getMostRecentOperations();
+              }
+
+            case 8:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function addNewOperation(_x2, _x3) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
   return {
-    result: result,
     operation: operation,
-    getResult: getResult,
-    addNewOperation: addNewOperation
+    createOperation: createOperation,
+    addNewOperation: addNewOperation,
+    result: result,
+    getResult: getResult
   };
 }
 
@@ -17484,7 +17685,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
-function useRecentOperations(result) {
+function useRecentOperations() {
   var operations = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
 
   var getMostRecentOperations = /*#__PURE__*/function () {
@@ -17518,7 +17719,6 @@ function useRecentOperations(result) {
   }();
 
   (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(getMostRecentOperations);
-  (0,vue__WEBPACK_IMPORTED_MODULE_1__.watch)(result, getMostRecentOperations);
   return {
     operations: operations,
     getMostRecentOperations: getMostRecentOperations

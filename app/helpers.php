@@ -13,8 +13,8 @@ if (!function_exists('validateOperatings')) {
             throw new Exception('One of the operands is not a valid number.');
         }
 
-        $firstOperating = (int) $operatings->get(0);
-        $secondOperating = (int) $operatings->get(1);
+        $firstOperating = (float) $operatings->get(0);
+        $secondOperating = (float) $operatings->get(1);
 
         if(is_nan($firstOperating) || is_nan($secondOperating)) {
             throw new Exception('The operation is not valid.');

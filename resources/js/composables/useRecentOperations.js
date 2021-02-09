@@ -1,6 +1,6 @@
-import { ref, watch, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 
-export default function useRecentOperations(result) {
+export default function useRecentOperations() {
     const operations = ref([])
     const getMostRecentOperations = async() => {
         const response = await axios.get('./api/operations')
@@ -11,7 +11,6 @@ export default function useRecentOperations(result) {
     }
 
     onMounted(getMostRecentOperations)
-    watch(result, getMostRecentOperations)
 
     return {
         operations,

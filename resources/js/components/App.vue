@@ -1,5 +1,5 @@
 <template>
-    <div class="relative max-w-xl mx-auto" v-cloak>
+    <div class="relative max-w-xl mx-auto">
         <Ornament class="absolute left-full transform translate-x-1/2" />
         <Ornament class="absolute right-full bottom-0 transform -translate-x-1/2" />
 
@@ -8,13 +8,14 @@
             <template v-slot:default>Please, select the operation that you want to make.</template>
         </TitleSection>
 
-        <Calculator result="result"
-                    operation="operation"
+        <Calculator :result="result"
+                    :operation="operation"
                     :operations="operations"
                     :getResult="getResult"
                     :deleteOperations="deleteOperations"
                     :addNewOperation="addNewOperation"
                     :getMostRecentOperations="getMostRecentOperations"
+                    :createOperation="createOperation"
         />
 
         <TickerTape result="result"
@@ -44,15 +45,16 @@ export default {
         TickerTape,
         TitleSection,
     },
-    setup(props) {
-        const { result, getResult, operation, addNewOperation } = useGetResult()
-        const { operations, getMostRecentOperations } = useRecentOperations(result)
+    setup() {
+        const { result, getResult, operation, createOperation, addNewOperation } = useGetResult()
+        const { operations, getMostRecentOperations } = useRecentOperations()
         const { operationDeleted, deleteOperation, deleteOperations } = useDeleteOperation(getMostRecentOperations)
 
         return {
             result,
             getResult,
             operation,
+            createOperation,
             addNewOperation,
             operations,
             getMostRecentOperations,

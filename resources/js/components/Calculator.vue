@@ -1,39 +1,42 @@
 <template>
     <div class="mt-12 mb-5">
-        <Result result="result" operation="operation" />
+        <Result :result="result" :operation="operation" />
 
         <form method="POST" class="grid grid-cols-4 gap-1 grid-cols">
             <Number v-for="(value, name, index) in [7, 8, 9]"
                     :key="index"
-                    @click="getResult(`${value}`)">
+                    @click="createOperation(`${value}`)">
                 <template v-slot:default>{{ value }}</template>
             </Number>
-            <Operator @click="getResult('/')">
+            <Operator @click="createOperation('/')">
                 <template v-slot:default>÷</template>
             </Operator>
             <Number v-for="(value, name, index) in [4, 5, 6]"
                     :key="index"
-                    @click="getResult(`${value}`)">
+                    @click="createOperation(`${value}`)">
                 <template v-slot:default>{{ value }}</template>
             </Number>
-            <Operator @click="getResult(`*`)">
+            <Operator @click="createOperation(`*`)">
                 <template v-slot:default>×</template>
             </Operator>
             <Number v-for="(value, name, index) in [1, 2, 3]"
                     :key="index"
-                    @click="getResult(`${value}`)">
+                    @click="createOperation(`${value}`)">
                 <template v-slot:default>{{ value }}</template>
             </Number>
-            <Operator @click="getResult('-')">
+            <Operator @click="createOperation('-')">
                 <template v-slot:default>−</template>
             </Operator>
-            <Number @click="getResult('0')">
+            <Number @click="createOperation('0')">
                 <template v-slot:default>0</template>
             </Number>
+            <Operator @click="createOperation('.')">
+                <template v-slot:default>.</template>
+            </Operator>
             <Submit @click="addNewOperation(getMostRecentOperations, $event)">
                 <template v-slot:default>=</template>
             </Submit>
-            <Operator @click="getResult('+')">
+            <Operator @click="createOperation('+')">
                 <template v-slot:default>+</template>
             </Operator>
             <Clear @click="deleteOperations"
@@ -61,7 +64,7 @@ export default {
         Result,
         Submit,
     },
-    props: ['result', 'getResult', 'operation', 'operations', 'getMostRecentOperations', 'addNewOperation', 'deleteOperations'],
+    props: ['result', 'getResult', 'operation', 'createOperation', 'operations', 'getMostRecentOperations', 'addNewOperation', 'deleteOperations'],
     setup(props) {
         const { result, getResults, operation, operations, getMostRecentOperations, addNewOperation, deleteOperations } = toRefs(props)
 
