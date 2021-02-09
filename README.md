@@ -24,3 +24,104 @@ A "ticker tape" interface should be built that shows all previous calculations w
 To really impress the customers of CalcTek, your calculator should support more complex calculation chains and even additional calculation operators:
 
 `sqrt((((9*9)/12)+(13-4))*2)^2)`
+
+## Pre-requisites
+
+- PHP ^8.0.
+- A MySQL database connection with username and passwords
+- Copy the .env.example file and rename it as .env.
+- Fill the values of the database connection into the .env file.
+- Yarn or NPM installed globally.
+
+## Installation requirements
+
+- Install required packages.
+
+```
+composer install
+```
+
+- Generate key for application.
+
+```
+php artisan key:generate
+```
+
+- Execute db migrations.
+
+```
+php artisan migrate:install
+```
+
+- Install NPM packages.
+
+```
+yarn install
+```
+
+or
+
+```
+npm install
+```
+
+- Generate the front-end files for prod env.
+
+```
+yarn prod
+```
+
+or
+
+```
+npm run prod
+```
+
+- Generate the front-end files for dev env.
+
+```
+yarn dev
+```
+
+or
+
+```
+npm run dev
+```
+
+- Generate the front-end files for dev env with autoloading.
+
+```
+yarn watch
+```
+
+or
+
+```
+npm run watch
+```
+
+## Tests
+
+You can run the tests suit with the next commands:
+
+```
+php artisan test
+```
+
+or
+
+```
+vendor/bin/phpunit
+```
+
+You can specify if the tests should run in parallel with `x` processes as there are available CPU cores on your machine where `x` is an integer number.
+
+```
+php artisan test --parallel --process=x
+```
+
+# TODO:
+
+- Add Front-end tests using Laravel Dusk.
+- Add the feature of the Stretch Goal section.
